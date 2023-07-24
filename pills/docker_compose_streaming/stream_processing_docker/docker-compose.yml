@@ -1,0 +1,71 @@
+version: '3'
+services:
+  # spark-master:
+  #   image: bde2020/spark-master:3.1.1-hadoop3.2
+  #   container_name: spark-master
+  #   ports:
+  #     - 8081:8081
+  #     - 7077:7077
+
+  # spark-worker:
+  #   image: bde2020/spark-worker:3.1.1-hadoop3.2
+  #   container_name: spark-worker
+  #   environment:
+  #     - SPARK_MASTER=spark://spark-master:7077
+  #   depends_on:
+  #     - spark-master
+  # spark-master:
+  #   image: bitnami/spark:3.3.2
+  #   volumes:
+  #     - ./data:/opt/spark/jars
+  #   container_name: spark-master
+  #   ports:
+  #     - '8081:8081' # Spark Web UI
+  #     - '7077:7077' # Spark Master
+  #   environment:
+  #     - SPARK_MODE=master
+
+  # spark-worker:
+  #   image: bitnami/spark:3.3.2
+  #   container_name: spark-worker
+  #   depends_on:
+  #     - spark-master
+  #   environment:
+  #     - SPARK_MODE=worker
+  #     - SPARK_MASTER_URL=spark://spark-master:7077
+  jupyter:
+    image: jupyter/pyspark-notebook
+    container_name: jupyter
+    ports:
+      - 8888:8888
+    environment:
+      - JUPYTER_TOKEN=easy
+    volumes:
+      - ./data:/home/jovyan/work
+      # - ./data/kernel.json:/usr/local/share/jupyter/kernels/python3/kernel.json
+
+
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+volumes:
+  notebooks:
+  
