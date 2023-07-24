@@ -231,6 +231,12 @@ Now if you managed to get through all that yourself well done. We'll be using th
 to do some more monster tracking.
 
 
+## Moving On
+
+Once you have done this, move onto the Streaming Continued folder and work through those files.
+
+[Link here](https://github.com/makersacademy/data_streaming/05_assessment/01_assessment.md)
+
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
 ---

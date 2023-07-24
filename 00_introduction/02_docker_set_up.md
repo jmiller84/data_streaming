@@ -108,7 +108,7 @@ This is the direct link to the version of Jupyter running from the Docker contai
 
 Once you have done this, move onto the Spark folder and work through those files.
 
-[Link here](https://github.com/makersacademy/data_streaming/01_spark/01_architecture.ed.md)
+[Link here](https://github.com/makersacademy/data_streaming/01_spark/01_architecture.md)
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

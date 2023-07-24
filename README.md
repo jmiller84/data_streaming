@@ -1,7 +1,7 @@
 
 # Data Streaming
 
-In this module you will learn to:
+In this module you will learn about:
 
 * Sub Pub systems like Kafka.
 * Streaming with PySpark.
@@ -71,7 +71,7 @@ Here we'll start to get into streaming, and start tracking monsters.
 
 Follow on from 04, chasing monsters and seeing what damage they've caused.
 
-1. [Assessment](05_assessment/01_assessment.md)
+1. [Assessment](05_assessment/01_assessment.md) 📡
 
 
 

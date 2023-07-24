@@ -136,6 +136,12 @@ So far we've learnt about topics, these abstractions that can be partitioned, th
 Now let's move on to sending and receiving data.
 
 
+## Moving On
+
+Once you have done this, move onto the Spark Streaming folder and work through those files.
+
+[Link here](https://github.com/makersacademy/data_streaming/03_spark_streaming/00_intro.md)
+
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
 ---

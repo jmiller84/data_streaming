@@ -32,6 +32,11 @@ Use [this form](https://airtable.com/shr6mk28x0fy3OrxN?prefill_Item=data_streami
 
 Hold onto this notebook, you may want to refer back to it in upcoming chapters.
 
+## Moving On
+
+Once you have done this, move onto the Kafka folder and work through those files.
+
+[Link here](https://github.com/makersacademy/data_streaming/02_kafka/01_intro.md)
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
