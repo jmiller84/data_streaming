@@ -11,7 +11,7 @@ Navigate to the DND Monsters dataset [here](../datasets/dnd_monsters.csv) and im
 Here is the challenge. Print the top 20 monsters which are:
 1. Legendary,
 2. Order them by the column dex (for Dexterity), 
-3. If the monster is a flying type - subtract `2` from it's `dex`.
+3. If the monster has a speed type of `fly` - subtract `2` from it's `dex`.
 
 Now this is tricky and you'll need to google. One piece of advice, when you
 order something make sure it's a number and not a word.
