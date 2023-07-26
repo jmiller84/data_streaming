@@ -155,14 +155,29 @@ but you need a schema with that.
 ### DataType Review
 
 Now from the above three methods, creating an RDD and it's style of use is called
-functional programming, using map and reduce to chain transformation together,
-it feels much lower level than the others. 
-With DataSet we have to specify the types, which can be handy so when we are
-writing code our IDE we are using can point use in the right direction, when we
-think we have an integer but after a transformation it might have become a 
-decimal, it can warn up, but coming from Python most PySpark developers don't use
-DataSets.
-Having said that DataFrames are very popular.
+functional programming (different to the OOP style you may be used to), using map and reduce to chain transformation together, it feels much lower level than the others. 
+
+With a DataSet we have to specify the types (common in Java or Scala), which can be handy so when we are writing code, the IDE we are using can point use in the right direction, when we think we have an integer but after a transformation it might have become a 
+decimal, it can warn us.
+
+In Scala they might look like this:
+
+``` scala 
+val people = spark.read.parquet(“…”).as[Person] // Scala
+```
+or in java they might look like this.
+
+``` java
+Dataset<Person> people = spark.read().parquet(“…”).as(Encoders.bean(Person.class));
+```
+
+It doesn't look like there is support at the moment for Typed Datasets for PySpark and python just now, but that's fine as we will be using DataFrames, which are more familiar to us anyway.
+
+Coming from Python most PySpark developers don't use
+DataSets, in favour of DataFrames - which is what we will be using.
+
+Having said that DataFrames are very popular. They are similar in nature to DataFrames in Pandas, and mimic the relational database table structure.
+
 You can also use Spark with SQL which we'll show below.
 
 ```python
