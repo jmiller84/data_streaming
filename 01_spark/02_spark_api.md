@@ -23,7 +23,7 @@ sc = SparkContext("local", "WordCountApp")
 Create a new cell as we don't want to create multiple session each time we run the code.
 ``` python
 # Load the input text file
-lines = sc.textFile("./work/data/dnd_monsters.csv")
+lines = sc.textFile("./work/dnd_monsters.csv")
 
 # What type is lines?
 print(type(lines))
