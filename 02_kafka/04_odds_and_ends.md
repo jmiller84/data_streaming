@@ -7,6 +7,10 @@ evolution capabilities and ensure compatibility between producers and consumers.
 Note the below examples aren't for following I just thought I'd add them in so you
 can gain more exposure to Kafka.
 
+Setting up Avro, Binary encoding and decoding and serialisation is probably overkill for such a small message, or dataset that we are sending - it is good to see as an example, but bear in mind that a real world scenario here may opt for AVRO with Schema Registry when the data gets into the terabyte range or larger, due to the speed of reading/writing efficiency compared to something like JSON.
+
+This is meant more as an example of what it might look like, and not a practical example.
+
 1. Schema Registry Basics:
     - The schema registry is a separate service that runs alongside Kafka and is responsible
 for managing schemas.
@@ -20,82 +24,11 @@ library, which provides a Python client for interacting with Kafka and the schem
     - You can install it using pip: `pip install confluent-kafka`.
 
 3. Producing Messages with Schema Registry:
-    - To produce AVRO encoded messages with the schema registry, you need to define 
-your AVRO schema and register it in the registry.
+    - To produce AVRO encoded messages with a schema registry, you need to define your AVRO schema and register it in the registry.
     - Here's an example of producing a message with a registered schema:
 
-```python
-from confluent_kafka import avro
-from confluent_kafka.avro import AVROProducer
+**N.B. This example has been moved to the folder `avro_schema_registry_example` found [here](../avro_schema_registry_example/avro_shema_registry.ipynb). You will need to pull down the all of the tools specified in the `docker-compose.yml`. It will take a while, and there are a lot of them. This step is 100% entirely optional to do, as the amount of connecting, downloading, and set-up - is incredibly underwhelming to send a two line AVRO message. It has been included for completeness as Schema Registry is widely used on larger systems.**
 
-# Define the AVRO schema
-schema = """
-{
-  "type": "record",
-  "name": "MyRecord",
-  "fields": [
-    {"name": "id", "type": "int"},
-    {"name": "name", "type": "string"}
-  ]
-}
-"""
-
-# Create an AVROProducer with the schema registry configuration
-producer = AVROProducer(
-    {
-        "bootstrap.servers": "kafka:9092",
-        "schema.registry.url": "http://kafka:8081",
-    },
-    default_value_schema=avro.loads(schema),
-)
-
-# Produce a message with the schema
-message = {"id": 1, "name": "John Doe"}
-producer.produce(topic="my_topic", value=message)
-producer.flush()
-```
-
-4. Consuming Messages with Schema Registry:
-    - To consume AVRO encoded messages with the schema registry, you need to configure 
-the consumer to use the schema registry and provide the schema ID.
-    - Here's an example of consuming messages with a registered schema:
-
-```python
-from confluent_kafka import avro
-from confluent_kafka.avro import AVROConsumer
-
-# Create an AVROConsumer with the schema registry configuration
-consumer = AVROConsumer(
-    {
-        "bootstrap.servers": "kafka:9092",
-        "group.id": "my_consumer_group",
-        "schema.registry.url": "http://kafka:8081",
-    }
-)
-
-# Subscribe to the topic
-consumer.subscribe(["my_topic"])
-
-# Consume messages with the registered schema
-while True:
-    message = consumer.poll(1.0)
-    if message is None:
-        continue
-    if message.error():
-        print(f"Error: {message.error()}")
-        continue
-
-    # Get the AVRO-decoded message value
-    value = message.value()
-
-    # Access the fields in the value
-    id_value = value["id"]
-    name_value = value["name"]
-
-    print(f"Received message - ID: {id_value}, Name: {name_value}")
-
-consumer.close()
-```
 
 These examples demonstrate how to produce and consume AVRO encoded messages using the 
 schema registry in Python. Ensure that you have a running Kafka cluster and a schema 
