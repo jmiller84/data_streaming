@@ -101,7 +101,7 @@ Follow along this time running the code.
 
 ```python
 import kafka
-consumer = kafka.KafkaConsumer(group_id='test', bootstrap_servers=['localhost:9092'])
+consumer = kafka.KafkaConsumer(group_id='test', bootstrap_servers=['kafka:9092'])
 consumer.topics()
 ```
 
@@ -118,7 +118,7 @@ admin_client = KafkaAdminClient(
 )
 
 topic_list = []
-topic_list.append(NewTopic(name="example_topic", num_partitions=1, replication_factor=1))
+topic_list.append(NewTopic(name="another_example_topic", num_partitions=1, replication_factor=1))
 admin_client.create_topics(new_topics=topic_list, validate_only=False)
 ```
 Then let's run our previous now and it should return our topic name. 
@@ -126,7 +126,7 @@ Then let's run our previous now and it should return our topic name.
 We should see this output returned: 
 
 ``` zsh
-CreateTopicsResponse_v3(throttle_time_ms=0, topic_errors=[(topic='example_topic', error_code=0, error_message=None)])
+CreateTopicsResponse_v3(throttle_time_ms=0, topic_errors=[(topic='another_example_topic', error_code=0, error_message=None)])
 ```
 
 And now we have a topic we can play with. If you try to run this once more, Kafka will tell you this topic has already been created.

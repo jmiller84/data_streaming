@@ -44,8 +44,8 @@ a random int between the two you passed in.
 
 ### Generating Data Part One
 
-Now we know how to create some random values to play with, start put it in a 
-loop to simulate events.
+Now we know how to create some random values to play with, we can put them in a 
+loop to simulate random events that may occur over time.
 
 Now there are two types of loops we want to simulate, an infinite loop,
 that will send a message every second or so until we tell it to stop
