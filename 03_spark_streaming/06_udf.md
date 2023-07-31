@@ -51,7 +51,7 @@ of Spark with your own functions.
 
 Once you have done this, move onto the Streaming Continued folder and work through those files.
 
-[Link here](https://github.com/makersacademy/data_streaming/04_streaming_continued/01_streaming_detailed.md)
+[Link here](https://github.com/makersacademy/data_streaming/blob/main/04_streaming_continued/01_streaming_detailed.md)
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 

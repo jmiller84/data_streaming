@@ -235,7 +235,7 @@ to do some more monster tracking.
 
 Once you have done this, move onto the Streaming Continued folder and work through those files.
 
-[Link here](https://github.com/makersacademy/data_streaming/05_assessment/01_assessment.md)
+[Link here](https://github.com/makersacademy/data_streaming/blob/main/05_assessment/01_assessment.md)
 
 <!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
