@@ -115,8 +115,10 @@ So the above reuses a lot of code we've used before, the only `gotcha` is a Kafk
 event needing a field called value, which I've put all our fields into.
 </details>
 
-*N.B. If you use the above code, put it in a cell, and remember to skip this cell when running your `monster_tracker` to write to kafka.*
+#### *N.B. If you use the above code, put it in a cell, and remember to skip this cell when running your `monster_tracker` to write to kafka.*
 > The reason for this seems that we are making multiple `sparkSessions` and We are trying to write to the wrong one. I have not yet worked out why `spark.stop()` doesn't close the session for us to make a new one that uses the .jar files we need, so for now make sure to skip this cell - or put it in another notebook entirely!
+
+> It seems as though the dreaded `Failed to find data source: kafka` error is occurring because the app we make in the above code block doesn't contain the config `.jar` files we include later on, that detail how Spark and Kafka integrate. In order not to get the error later - omit this cell when running your notebook.
 
 ### Let's add more
 
