@@ -1,6 +1,6 @@
 # **DEPECIATED**
 
-This module is currently depreciated and has moved to https://github.com/makersacademy/stream_processing
+This module is currently depreciated and has moved to https://github.com/makersacademy/stream-processing
 
 
 # Data Streaming
